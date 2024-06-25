@@ -7,7 +7,7 @@ public class LogInPage extends Credentials{
     
     private static boolean loop = true;  // Loop condition
     private static int input;           // User role scanner
-    private static int adminAccountID;  // admin account ID scanner 
+    protected static int adminAccountID;  // admin account ID scanner 
     private static Object adminPassword;  // admin password scanner
     private static int studentAccountID;  // student accound ID scanner
     private static Object studentPassword;  // student password scanner
@@ -89,7 +89,8 @@ public class LogInPage extends Credentials{
      
                       }else{     
                         System.out.println("Log In Succcessful!");
-                        System.out.println("Welcome to your dashboard user " + adminAccountID);     
+                        System.out.println("Welcome to your dashboard user " + adminAccountID);  
+                        new Dashboard().adminDashboard(logIn);;   
                } 
             }  
          }
@@ -110,7 +111,7 @@ public class LogInPage extends Credentials{
 
              System.out.print("Password: ");
              studentPassword = logIn.nextLine();
-             
+
             if(!studentCredentials.containsKey(studentAccountID)){
                System.out.println("Account ID does not Exist!");
                studentCredential(logIn);
@@ -128,7 +129,8 @@ public class LogInPage extends Credentials{
      
                       }else{     
                         System.out.println("Log In Succcessful!");
-                        System.out.println("Welcome to your dashboard user " + studentAccountID);     
+                        System.out.println("Welcome to your dashboard user " + studentAccountID);
+                        new Dashboard().studentDashboard(logIn);     
                } 
             }
          }
