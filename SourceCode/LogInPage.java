@@ -1,16 +1,20 @@
 package EnrollmentSystem.SourceCode;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class LogInPage extends Credentials{
     
-    private static boolean loop = true;
-    private static int input;
-    private static int adminAccountID;
-    private static Object adminPassword;
-    private static int studentAccountID;
-    private static Object studentPassword;
+    private static boolean loop = true;  // Loop condition
+    private static int input;           // User role scanner
+    private static int adminAccountID;  // admin account ID scanner 
+    private static Object adminPassword;  // admin password scanner
+    private static int adminKey;
+    private static Object adminValue; 
+    private static int studentAccountID;  // student accound ID scanner
+    private static Object studentPassword;  // student password scanner
 
+    // Asks the user what is their role
      static void userLogIn(Scanner logIn){
 
         while(loop){
@@ -48,30 +52,36 @@ public class LogInPage extends Credentials{
             }   
         } 
     }
-
+   // if user is admin, they will go here. The admin login 
     static void adminCredential(Scanner logIn){
 
         try {
         
             System.out.print("Account ID: ");
             adminAccountID = logIn.nextInt();
-                        logIn.nextLine();
+                             logIn.nextLine();
 
-            System.out.print("Password: ");
-            adminPassword = logIn.nextLine();
+       } catch (java.util.InputMismatchException  e) {
 
-       } catch (Exception e) {
-
-            System.out.println("Accound ID should be Integer Only!");
-        
+            System.out.println("Invalid Account ID!");
+       
          } 
-            if(!adminCredentials.containsKey(adminAccountID)){
+
+            if(!adminCredentials.containsValue(adminAccountID)){
                System.out.println("Account ID does not Exist!");
                adminCredential(logIn);
 
-              }else{ 
+              }else{
+                System.out.print("Password: ");
+                adminPassword = logIn.nextLine();
+                       
+                   for(Map.Entry<Integer, Object> checker : adminCredentials.entrySet()){
+                       adminKey = checker.getKey();
+                       adminValue = checker.getValue();
+                   }
                    
-                    if(!adminCredentials.containsValue(adminPassword)){
+                   Object pass = adminCredentials.getOrDefault(adminKey, adminValue);
+                    if(pass != adminPassword){
                         System.out.println("Incorrect password!");
                         adminCredential(logIn);
      
@@ -81,22 +91,22 @@ public class LogInPage extends Credentials{
                } 
             }  
          }
-
+    // If user is student, they will go here. The Student Log In
     static void studentCredential(Scanner logIn){
 
         try {
         
             System.out.print("Account ID: ");
             studentAccountID = logIn.nextInt();
-                        logIn.nextLine();
+                               logIn.nextLine();
 
             System.out.print("Password: ");
             studentPassword = logIn.nextLine();
 
-       } catch (Exception e) {
+        } catch (Exception e) {
 
             System.out.println("Accound ID should be Integer Only!");
-        
+            
          } 
             if(!studentCredentials.containsKey(studentAccountID)){
                System.out.println("Account ID does not Exist!");
@@ -119,9 +129,7 @@ public class LogInPage extends Credentials{
 
         Scanner logIn = new Scanner(System.in);
 
-        adminCredentials.put(12345,"Asshley19?");
-        studentCredentials.put(54321, "fefri");
-
+        addAdminAccount(123, "Asshley");
         userLogIn(logIn);
 
        logIn.close(); 
