@@ -138,7 +138,8 @@ public class LogInPage extends Credentials{
     public static void main(String[]args){
 
         Scanner logIn = new Scanner(System.in);
-
+        
+       // Data Placeholder using Hashmap 
         adminCredentials.put(54321, "fefri");
         adminCredentials.put( 9876, "Hello");
         adminCredentials.put(8888, "World");

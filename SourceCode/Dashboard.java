@@ -4,18 +4,16 @@ import java.util.Scanner;
 
 public class Dashboard {
 
-    private boolean looper = true;
-    private int input;
+    private boolean looper = true;  // Condition for while loop
+    private int input;  // Scanner input
     
      Dashboard(){
 
         Scanner dashboard = new Scanner(System.in);
 
-        adminDashboard(dashboard);
-
         dashboard.close();
     }
-
+    // admin Dashboard Method
      public void adminDashboard(Scanner dashboard){
     
         while(looper){
@@ -25,6 +23,7 @@ public class Dashboard {
         System.out.println("1. Course Management");
         System.out.println("2. Enrollment Management");
 
+      // To handle input mismatch 
         try {
 
             System.out.print("Enter your choice here: ");
@@ -53,7 +52,7 @@ public class Dashboard {
          } 
       }        
    }
-
+   // Student Dashboard Method
      public void studentDashboard(Scanner dashboard){
 
     while(looper){
