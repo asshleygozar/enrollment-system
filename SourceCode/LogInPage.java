@@ -9,10 +9,13 @@ public class LogInPage extends Credentials{
     private static int input;           // User role scanner
     private static int adminAccountID;  // admin account ID scanner 
     private static Object adminPassword;  // admin password scanner
-    private static int adminKey;
-    private static Object adminValue; 
     private static int studentAccountID;  // student accound ID scanner
     private static Object studentPassword;  // student password scanner
+
+    LogInPage(){
+
+       
+    }
 
     // Asks the user what is their role
      static void userLogIn(Scanner logIn){
@@ -67,7 +70,7 @@ public class LogInPage extends Credentials{
        
          } 
 
-            if(!adminCredentials.containsValue(adminAccountID)){
+            if(!adminCredentials.containsKey(adminAccountID)){
                System.out.println("Account ID does not Exist!");
                adminCredential(logIn);
 
@@ -76,12 +79,11 @@ public class LogInPage extends Credentials{
                 adminPassword = logIn.nextLine();
                        
                    for(Map.Entry<Integer, Object> checker : adminCredentials.entrySet()){
-                       adminKey = checker.getKey();
-                       adminValue = checker.getValue();
+                       checker.getKey();
+                       checker.getValue();
                    }
                    
-                   Object pass = adminCredentials.getOrDefault(adminKey, adminValue);
-                    if(pass != adminPassword){
+                    if(!adminCredentials.get(adminAccountID).equals(adminPassword)){
                         System.out.println("Incorrect password!");
                         adminCredential(logIn);
      
@@ -100,21 +102,27 @@ public class LogInPage extends Credentials{
             studentAccountID = logIn.nextInt();
                                logIn.nextLine();
 
-            System.out.print("Password: ");
-            studentPassword = logIn.nextLine();
-
         } catch (Exception e) {
 
             System.out.println("Accound ID should be Integer Only!");
             
          } 
+
+             System.out.print("Password: ");
+             studentPassword = logIn.nextLine();
+             
             if(!studentCredentials.containsKey(studentAccountID)){
                System.out.println("Account ID does not Exist!");
                studentCredential(logIn);
 
               }else{ 
+
+                for(Map.Entry<Integer, Object> checker : adminCredentials.entrySet()){
+                    checker.getKey();
+                    checker.getValue();
+                }
                    
-                    if(!studentCredentials.containsValue(studentPassword)){
+                    if(!studentCredentials.get(studentAccountID).equals(studentPassword)){
                         System.out.println("Incorrect password!");
                         studentCredential(logIn);
      
@@ -129,7 +137,14 @@ public class LogInPage extends Credentials{
 
         Scanner logIn = new Scanner(System.in);
 
-        addAdminAccount(123, "Asshley");
+        adminCredentials.put(54321, "fefri");
+        adminCredentials.put( 9876, "Hello");
+        adminCredentials.put(8888, "World");
+        adminCredentials.put(12345, "Hi");
+
+        studentCredentials.put(2023, "OuM");
+        studentCredentials.put(2024, "Yes");
+
         userLogIn(logIn);
 
        logIn.close(); 
