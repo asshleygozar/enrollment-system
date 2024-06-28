@@ -42,7 +42,7 @@ public class Dashboard {
 
           case 2:
            looper = false;
-           new EnrollmentManagement();
+           new EnrollmentManagement().adminManagement(dashboard);
            break;
 
           default:

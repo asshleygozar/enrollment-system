@@ -2,21 +2,109 @@ package EnrollmentSystem.SourceCode;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class EnrollmentManagement {
 
     private int userInput;
+    private int studentAge;
     private boolean looping = true;
-    private ArrayList <String> course = new ArrayList <String> ();
+    private String studentFullName;
+    private char studentGender;
+    private List <String> studentName = new ArrayList <String> ();
+    private List <Integer> studentID = new ArrayList <Integer> ();
+    private List <Integer> studentAges = new ArrayList <Integer> ();
+    private List <Character> studentGenderIdentity = new ArrayList <Character>();  
 
    EnrollmentManagement(){
 
 
    }
 
-   public void adminEnrollment(){
+   public void adminEnrollment(Scanner enroll){
 
+    while(looping){
 
+      try {
+
+        System.out.println("Please Enter the Student Informations to proceed.");
+
+        System.out.print("Enter the Student Name: ");
+        studentFullName = enroll.nextLine();
+
+        System.out.print("Enter Age: ");
+        studentAge = enroll.nextInt();
+
+        System.out.print("Enter Gender: ");
+        studentGender = enroll.next().charAt(0);
+        
+      } catch (java.util.InputMismatchException e) {
+
+        System.out.println("Invalid Input!");
+        break;
+       }
+          Random identification = new Random();
+
+        int studentIdentity = identification.nextInt(1000000);
+
+       System.out.println("Student ID: "  + studentIdentity);
+       System.out.println("Student Name: " + studentFullName);
+       System.out.println("Student Age: " + studentAge);
+       System.out.println("Student Gender: " + studentGender);
+
+       studentName.add(studentFullName);
+       studentID.add(studentIdentity);
+       studentAges.add(studentAge);
+       studentGenderIdentity.add(studentGender);
+
+       System.out.println("Student Added Successful!");
+
+       while(looping){
+     
+        System.out.println("Choose your Next Action: ");
+
+        System.out.println("1. Enroll a student in a course.");
+        System.out.println("2. View all Enrollments.");
+        System.out.println("3. Remove a student from a course.");
+        System.out.println("4. Exit");
+
+        try {
+          
+          System.out.print("Enter here: ");
+          int userInput = enroll.nextInt();
+   
+          switch(userInput){
+   
+           case 1:
+            adminEnrollment(enroll);
+            break;
+   
+           case 2:
+            adminViewEnrollees();
+            break;
+   
+           case 3:
+            adminRemoveEnrollee();
+            break;
+   
+           case 4:
+            new LogInPage();
+            break;
+   
+           default:
+           System.out.println("1 to 4 Only!!");
+             
+           }
+        } catch (java.util.InputMismatchException e) {
+
+          System.out.println("Invalid Input!");
+          break;
+
+         }
+       }
+       break;
+     }
    }
 
    public void adminViewEnrollees(){
@@ -54,14 +142,17 @@ public class EnrollmentManagement {
 
             case 1: 
              looping = false;
+             adminEnrollment(scanner);
              break;
 
             case 2:
              looping = false;
+             adminViewEnrollees();
              break;
 
             case 3:
              looping = false;
+             adminRemoveEnrollee();
              break;
 
             default:
