@@ -5,53 +5,52 @@ import java.util.Scanner;
 public class Dashboard {
 
     private boolean looper = true;  // Condition for while loop
-    private int input;  // Scanner input
-    
-     Dashboard(){
+    private int choice;  // Scanner input
 
-        Scanner dashboard = new Scanner(System.in);
+    Dashboard(){
 
-        dashboard.close();
+
     }
-    // admin Dashboard Method
-     public void adminDashboard(Scanner dashboard){
-    
-        while(looper){
+      // Admin Dashboard
+    public void adminDashboard(Scanner dashboard){
+      
+      while(looper){
 
-        System.out.println("Please choose your category: ");
+      System.out.println("Please choose your category: ");
 
-        System.out.println("1. Course Management");
-        System.out.println("2. Enrollment Management");
+      System.out.println("1. Course Management");
+      System.out.println("2. Enrollment Management");
 
-      // To handle input mismatch 
-        try {
+    // To handle input mismatch 
+      try {
 
-            System.out.print("Enter your choice here: ");
-            input = dashboard.nextInt();
-            
-        } catch (java.util.InputMismatchException e) {
+         System.out.print("Enter your choice here: ");
+         choice = dashboard.nextInt();
+         
+      } catch (java.util.InputMismatchException e) {
 
-           System.out.println("Invalid Input!");
+         System.out.println("Invalid Input!");
+         break;
+      }     
+
+        switch(choice){
+
+          case 1: 
+           looper = false;
+           new CourseManagement();
            break;
-        }
 
-          switch(input){
+          case 2:
+           looper = false;
+           new EnrollmentManagement();
+           break;
 
-            case 1: 
-             looper = false;
-             new CourseManagement();
-             break;
-
-            case 2:
-             looper = false;
-             new EnrollmentManagement();
-             break;
-
-            default:
-             looper = true;
-         } 
-      }        
-   }
+          default:
+           looper = true;
+       } 
+    }
+ }
+     
    // Student Dashboard Method
      public void studentDashboard(Scanner dashboard){
 
@@ -62,10 +61,11 @@ public class Dashboard {
         System.out.println("1. Course Management");
         System.out.println("2. Enrollment Management");
 
+       
         try {
 
             System.out.print("Enter your choice here: ");
-            input = dashboard.nextInt();
+            choice = dashboard.nextInt();
             
         } catch (java.util.InputMismatchException e) {
 
@@ -73,7 +73,7 @@ public class Dashboard {
            break;
         }
 
-          switch(input){
+          switch(choice){
 
             case 1: 
              looper = false;
