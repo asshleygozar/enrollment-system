@@ -10,7 +10,7 @@ public class EnrollmentManagement {
     private int userInput;
     private int studentAge;
     private boolean looping = true;
-    public String studentFullName;
+    private String studentFullName;
     private char studentGender;
     private List <String> studentName = new ArrayList <String> ();
     private List <Integer> studentID = new ArrayList <Integer> ();
@@ -29,8 +29,8 @@ public class EnrollmentManagement {
         System.out.println("Please Enter the Student Informations to proceed.");
 
         System.out.print("Enter the Student Name: ");
-        studentFullName = enroll.next();
-                          
+        studentFullName = enroll.nextLine();
+        studentFullName = enroll.nextLine(); 
       try {
 
         System.out.print("Enter Age: ");
