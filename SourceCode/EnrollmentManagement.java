@@ -10,7 +10,7 @@ public class EnrollmentManagement {
     private int userInput;
     private int studentAge;
     private boolean looping = true;
-    private String studentFullName;
+    public String studentFullName;
     private char studentGender;
     private List <String> studentName = new ArrayList <String> ();
     private List <Integer> studentID = new ArrayList <Integer> ();
@@ -26,12 +26,12 @@ public class EnrollmentManagement {
 
     while(looping){
 
-      try {
-
         System.out.println("Please Enter the Student Informations to proceed.");
 
         System.out.print("Enter the Student Name: ");
-        studentFullName = enroll.nextLine();
+        studentFullName = enroll.next();
+                          
+      try {
 
         System.out.print("Enter Age: ");
         studentAge = enroll.nextInt();
@@ -72,38 +72,41 @@ public class EnrollmentManagement {
         try {
           
           System.out.print("Enter here: ");
-          int userInput = enroll.nextInt();
-   
+          userInput = enroll.nextInt();
+
           switch(userInput){
    
-           case 1:
-            adminEnrollment(enroll);
-            break;
-   
-           case 2:
-            adminViewEnrollees();
-            break;
-   
-           case 3:
-            adminRemoveEnrollee();
-            break;
-   
-           case 4:
-            new LogInPage();
-            break;
-   
-           default:
-           System.out.println("1 to 4 Only!!");
-             
-           }
+            case 1:
+             adminEnrollment(enroll);
+             looping = false;
+             break;
+    
+            case 2:
+             adminViewEnrollees();
+             looping = false;
+             break;
+    
+            case 3:
+             adminRemoveEnrollee();
+             looping = false;
+             break;
+    
+            case 4: 
+             new LogInPage(enroll);
+             looping = false;
+             break;
+    
+            default:
+            System.out.println("1 to 4 Only!!");
+              
+            }
         } catch (java.util.InputMismatchException e) {
 
           System.out.println("Invalid Input!");
           break;
 
          }
-       }
-       break;
+       } 
      }
    }
 
@@ -141,8 +144,8 @@ public class EnrollmentManagement {
          switch(userInput){
 
             case 1: 
-             looping = false;
              adminEnrollment(scanner);
+             looping = false;
              break;
 
             case 2:

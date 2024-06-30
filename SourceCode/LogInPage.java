@@ -5,20 +5,20 @@ import java.util.Scanner;
 
 public class LogInPage extends Credentials{
     
-    private static boolean loop = true;  // Loop condition
-    private static int input;           // User role scanner
-    protected static int adminAccountID;  // admin account ID scanner 
-    private static Object adminPassword;  // admin password scanner
-    private static int studentAccountID;  // student accound ID scanner
-    private static Object studentPassword;  // student password scanner
+    private  boolean loop = true;  // Loop condition
+    private  int input;           // User role scanner
+    protected int adminAccountID;  // admin account ID scanner 
+    private  Object adminPassword;  // admin password scanner
+    private  int studentAccountID;  // student accound ID scanner
+    private  Object studentPassword;  // student password scanner
 
-    LogInPage(){
-
-       
+    LogInPage(Scanner sc){
+         userLogIn(sc);
+        
     }
 
     // Asks the user what is their role
-     static void userLogIn(Scanner logIn){
+     public void userLogIn(Scanner logIn){
 
         while(loop){
             
@@ -56,7 +56,7 @@ public class LogInPage extends Credentials{
         } 
     }
    // if user is admin, they will go here. The admin login 
-    static void adminCredential(Scanner logIn){
+    public void adminCredential(Scanner logIn){
 
         try {
         
@@ -95,7 +95,7 @@ public class LogInPage extends Credentials{
             }  
          }
     // If user is student, they will go here. The Student Log In
-    static void studentCredential(Scanner logIn){
+    public void studentCredential(Scanner logIn){
 
         try {
         
@@ -137,7 +137,7 @@ public class LogInPage extends Credentials{
 
     public static void main(String[]args){
 
-        Scanner logIn = new Scanner(System.in);
+     Scanner scanner = new Scanner(System.in);;
         
        // Data Placeholder using Hashmap 
         adminCredentials.put(54321, "fefri");
@@ -148,8 +148,7 @@ public class LogInPage extends Credentials{
         studentCredentials.put(2023, "OuM");
         studentCredentials.put(2024, "Yes");
 
-        userLogIn(logIn);
+        new LogInPage(scanner);
 
-       logIn.close(); 
     }
 }
