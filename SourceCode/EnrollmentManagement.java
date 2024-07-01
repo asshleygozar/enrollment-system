@@ -11,11 +11,11 @@ public class EnrollmentManagement {
     private int studentAge;
     private boolean looping = true;
     private String studentFullName;
-    private char studentGender;
+    private String studentGender;
     private List <String> studentName = new ArrayList <String> ();
     private List <Integer> studentID = new ArrayList <Integer> ();
     private List <Integer> studentAges = new ArrayList <Integer> ();
-    private List <Character> studentGenderIdentity = new ArrayList <Character>();  
+    private List <String> studentGenderIdentity = new ArrayList <String>();  
 
    EnrollmentManagement(){
 
@@ -37,7 +37,7 @@ public class EnrollmentManagement {
         studentAge = enroll.nextInt();
 
         System.out.print("Enter Gender: ");
-        studentGender = enroll.next().charAt(0);
+        studentGender = enroll.next();
         
       } catch (java.util.InputMismatchException e) {
 
@@ -82,7 +82,7 @@ public class EnrollmentManagement {
              break;
     
             case 2:
-             adminViewEnrollees();
+             adminViewEnrollees(enroll);
              looping = false;
              break;
     
@@ -110,10 +110,68 @@ public class EnrollmentManagement {
      }
    }
 
-   public void adminViewEnrollees(){
+   public void adminViewEnrollees(Scanner sc){
+      
+     for(int i = 0; i < studentID.size();){
+        System.out.println("Student ID:  " + studentID.get(i));
+         i++;
+        for(int j = 0; j < studentName.size();){
+          System.out.println("Student Name: " + studentName.get(j));
+           j++;
+           for(int k = 0; k < studentAges.size();){
+             System.out.println("Age: " + studentAges.get(k));
+              k++;
+             for(int l = 0; l < studentGenderIdentity.size();){
+              System.out.println("Gender: " + studentGenderIdentity.get(l));
+               l++;
+               }
+            }
+         }
+      }
 
+       while(looping){
+          
+        System.out.println("Choose your next Action:\n");
+        
+        System.out.println("1. Enroll a Student");
+        System.out.println("2. View Enrollees");
+        System.out.println("3. Remove a Student");
+        System.out.println("4. Exit\n");
 
+        System.out.print("Enter here: ");
+        int enter = sc.nextInt();
+
+        switch (enter) {
+
+          case 1:
+            adminEnrollment(sc);
+            looping = false;
+             break;
+
+          case 2:
+            adminViewEnrollees(sc);
+            looping = false;
+            break;
+      
+          case 3:
+            adminRemoveEnrollee();
+            looping = false;
+            break;
+            
+          case 4:
+            new LogInPage(sc);
+            looping = false;
+            break;
+      
+          default:
+           looping = true;
+      
+          }  
+       }
    }
+      
+     
+     
 
    public void adminRemoveEnrollee(){
     
@@ -150,7 +208,7 @@ public class EnrollmentManagement {
 
             case 2:
              looping = false;
-             adminViewEnrollees();
+             adminViewEnrollees(scanner);
              break;
 
             case 3:
