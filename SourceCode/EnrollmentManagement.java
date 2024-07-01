@@ -2,7 +2,6 @@ package EnrollmentSystem.SourceCode;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class EnrollmentManagement {
@@ -12,10 +11,10 @@ public class EnrollmentManagement {
     private boolean looping = true;
     private String studentFullName;
     private String studentGender;
-    private List <String> studentName = new ArrayList <String> ();
-    private List <Integer> studentID = new ArrayList <Integer> ();
-    private List <Integer> studentAges = new ArrayList <Integer> ();
-    private List <String> studentGenderIdentity = new ArrayList <String>();  
+    private ArrayList <String> studentName = new ArrayList <String> ();
+    private ArrayList <Integer> studentID = new ArrayList <Integer> ();
+    private ArrayList <Integer> studentAges = new ArrayList <Integer> ();
+    private ArrayList <String> studentGenderIdentity = new ArrayList <String>();  
 
    EnrollmentManagement(){
 
@@ -112,22 +111,14 @@ public class EnrollmentManagement {
 
    public void adminViewEnrollees(Scanner sc){
       
-     for(int i = 0; i < studentID.size();){
-        System.out.println("Student ID:  " + studentID.get(i));
-         i++;
-        for(int j = 0; j < studentName.size();){
-          System.out.println("Student Name: " + studentName.get(j));
-           j++;
-           for(int k = 0; k < studentAges.size();){
-             System.out.println("Age: " + studentAges.get(k));
-              k++;
-             for(int l = 0; l < studentGenderIdentity.size();){
-              System.out.println("Gender: " + studentGenderIdentity.get(l));
-               l++;
-               }
-            }
-         }
-      }
+
+     for(int i = 0; i < studentID.size(); i++){
+          System.out.println( "Student ID: " + studentID.get(i));
+          System.out.println("Student Name: " + studentName.get(i));
+          System.out.println("Age: " + studentAges.get(i));
+          System.out.println("Gender: " + studentGenderIdentity.get(i)); 
+          System.out.println("");
+        }
 
        while(looping){
           
