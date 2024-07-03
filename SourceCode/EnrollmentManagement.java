@@ -22,6 +22,22 @@ public class EnrollmentManagement {
 
    }
 
+   public ArrayList<String> getStudentName(){
+    return studentName;
+   }
+
+   public ArrayList<Integer> getStudentID(){
+    return studentID;
+   }
+
+   public ArrayList<Integer> getStudentAges(){
+     return studentAges;
+   }
+
+   public ArrayList<String> getStudentGenderIdentity(){
+    return studentGenderIdentity;
+   }
+
    public void adminEnrollment(Scanner enroll){
 
     while(looping){
