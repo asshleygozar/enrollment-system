@@ -45,6 +45,10 @@ public class Dashboard {
            new EnrollmentManagement().adminManagement(dashboard);
            break;
 
+          case 3:
+           looper = false;
+           new StudentManagement().adminStudentManagement(dashboard);;
+
           default:
            looper = true;
        } 
