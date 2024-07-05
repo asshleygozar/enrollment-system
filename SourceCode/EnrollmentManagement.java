@@ -21,19 +21,19 @@ public class EnrollmentManagement {
 
 
    }
-
+    // To access the datas from ArrayList Student Names
    public ArrayList<String> getStudentName(){
     return studentName;
    }
-
+   // To access the datas from ArrayList Student IDs
    public ArrayList<Integer> getStudentID(){
     return studentID;
    }
-
+   // To access the datas from ArrayList Student Ages
    public ArrayList<Integer> getStudentAges(){
      return studentAges;
    }
-
+   // To access the datas from ArrayList Student Genders
    public ArrayList<String> getStudentGenderIdentity(){
     return studentGenderIdentity;
    }
