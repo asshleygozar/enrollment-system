@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class CourseManagement {
 
     private boolean loop = true;
-
+  
+     // Method for choosing which action to take
     public void adminCourseManagement(Scanner scan){
 
         while(loop){
@@ -49,20 +50,20 @@ public class CourseManagement {
             }
         }
     }
-
+    // Method for Adding Course
     public void adminAddCourse(Scanner scan){
 
 
     }
-
+     // Method for Updating Course
     public void adminUpdateCourse(Scanner scan){
 
     }
-
+     // Method for Deleteing Courses
     public void adminDeleteCourses(Scanner scan){
 
     }
-
+     // Method for Student Viewing their Courses
     public void studentViewCourse(Scanner scan){
 
 
