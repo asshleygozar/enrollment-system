@@ -37,7 +37,7 @@ public class EnrollmentManagement {
    public ArrayList<String> getStudentGenderIdentity(){
     return studentGenderIdentity;
    }
-
+  // Method for Admin Choice of Actions
    public void adminEnrollment(Scanner enroll){
 
     while(looping){
