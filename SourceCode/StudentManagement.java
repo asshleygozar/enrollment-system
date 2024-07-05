@@ -203,7 +203,7 @@ public class StudentManagement {
             }
         } 
     }
-
+    // Main page for choosing which section the student's information belong to
     public void adminUpdateStudentDetails(Scanner scan){
       
         while(true){
@@ -227,7 +227,7 @@ public class StudentManagement {
             }
         }
     }
-
+    // Update Information Method for Class CS01
     public void updateClassCS01(Scanner scan){
         System.out.println("Welcome to Class CS01, Please choose student you want to update.\n");
 
@@ -276,25 +276,304 @@ public class StudentManagement {
         }
 
         while(true){
-
+         
             try {
-                // To be continued! 
+             System.out.println("Choose your Next Action: \n");
+ 
+             System.out.println("1. Add new Student");
+             System.out.println("2. Update Student Information");
+             System.out.println("3. Remove a Student");
+             System.out.println("4. Back");
+             System.out.println("5. Exit\n");
+    
+             System.out.print("Enter here: ");
+             int userInput = scan.nextInt();
+ 
+             switch(userInput){
+ 
+                 case 1:
+                  break;
+ 
+                 case 2:
+                  break;
+ 
+                 case 3:
+                  break;
+ 
+                 case 4:
+                  break;
+ 
+                 case 5:
+                  break;
+ 
+                 default:
+             }
             } catch (Exception e) {
                System.out.println("Invalid Input!");
+               break;
             }
         }
     }
+     // Update Information Method for Class CS04
+    public void updateClassCS02(Scanner scan){
+        System.out.println("Welcome to Class CS02, Please choose student you want to update.\n");
 
-    public void updateClassCS02(){
+        for(int i = 0; i < CS02.size(); i++){
+       System.out.println("Student ID: " + CS02.get(i));
+       System.out.println("Student Name: " + CS02studentNames.get(i));
+       System.out.println("Student Age: " + CS02studentAge.get(i));
+       System.out.println("Student Gender: " + CS02studentGender.get(i));
+      }
 
+      while(true){
+         
+        try {
+           System.out.print("Enter student ID: ");
+           int userInput = scan.nextInt();
+
+            if(CS02.contains(userInput)){
+
+               for(int i = 0; i < CS02.size(); i++){
+                   if(CS02.get(i) == userInput){
+                     
+                     System.out.print("Enter Student Name: ");
+                     String updatedName = scan.nextLine();
+
+                     System.out.print("Enter Student Age: ");
+                     int updatedAge = scan.nextInt();
+
+                     System.out.print("Enter Student Gender: ");
+                     String updatedGender = scan.nextLine();
+
+                     CS02studentNames.set(i, updatedName);
+                     CS02studentAge.set(i, updatedAge);
+                     CS02studentGender.set(i, updatedGender);
+                     
+                     System.out.println("Student " + CS02.get(i) + "Information, Successfully Updated!");
+                    }
+                }
+
+            }else{
+                System.out.println("Student ID does not exists!");
+            }
+        } catch (InputMismatchException e) {
+             System.out.println("Invalid Input!");
+             break;
+           }
+       }
+
+       while(true){
+         
+           try {
+            System.out.println("Choose your Next Action: \n");
+
+            System.out.println("1. Add new Student");
+            System.out.println("2. Update Student Information");
+            System.out.println("3. Remove a Student");
+            System.out.println("4. Back");
+            System.out.println("5. Exit\n");
+   
+            System.out.print("Enter here: ");
+            int userInput = scan.nextInt();
+
+            switch(userInput){
+
+                case 1:
+                 break;
+
+                case 2:
+                 break;
+
+                case 3:
+                 break;
+
+                case 4:
+                 break;
+
+                case 5:
+                 break;
+
+                default:
+            }
+           } catch (Exception e) {
+              System.out.println("Invalid Input!");
+              break;
+           }
+       }
     }
+   //  Update Information Method for Class CS03
+    public void updateClassCS03(Scanner scan){
+        System.out.println("Welcome to Class CS03, Please choose student you want to update.\n");
 
-    public void updateClassCS03(){
+        for(int i = 0; i < CS03.size(); i++){
+       System.out.println("Student ID: " + CS03.get(i));
+       System.out.println("Student Name: " + CS03studentNames.get(i));
+       System.out.println("Student Age: " + CS03studentAge.get(i));
+       System.out.println("Student Gender: " + CS03studentGender.get(i));
+      }
 
+      while(true){
+         
+        try {
+           System.out.print("Enter student ID: ");
+           int userInput = scan.nextInt();
+
+            if(CS03.contains(userInput)){
+
+               for(int i = 0; i < CS03.size(); i++){
+                   if(CS03.get(i) == userInput){
+                     
+                     System.out.print("Enter Student Name: ");
+                     String updatedName = scan.nextLine();
+
+                     System.out.print("Enter Student Age: ");
+                     int updatedAge = scan.nextInt();
+
+                     System.out.print("Enter Student Gender: ");
+                     String updatedGender = scan.nextLine();
+
+                     CS03studentNames.set(i, updatedName);
+                     CS03studentAge.set(i, updatedAge);
+                     CS03studentGender.set(i, updatedGender);
+                     
+                     System.out.println("Student " + CS03.get(i) + "Information, Successfully Updated!");
+                    }
+                }
+
+            }else{
+                System.out.println("Student ID does not exists!");
+            }
+        } catch (InputMismatchException e) {
+             System.out.println("Invalid Input!");
+             break;
+           }
+       }
+
+       while(true){
+         
+           try {
+            System.out.println("Choose your Next Action: \n");
+
+            System.out.println("1. Add new Student");
+            System.out.println("2. Update Student Information");
+            System.out.println("3. Remove a Student");
+            System.out.println("4. Back");
+            System.out.println("5. Exit\n");
+   
+            System.out.print("Enter here: ");
+            int userInput = scan.nextInt();
+
+            switch(userInput){
+
+                case 1:
+                 break;
+
+                case 2:
+                 break;
+
+                case 3:
+                 break;
+
+                case 4:
+                 break;
+
+                case 5:
+                 break;
+
+                default:
+            }
+           } catch (Exception e) {
+              System.out.println("Invalid Input!");
+              break;
+           }
+       }
     }
+   // Update Information Method for Class CS04
+    public void updateClassCS04(Scanner scan){
+        System.out.println("Welcome to Class CS04, Please choose student you want to update.\n");
 
-    public void updateClassCS04(){
+        for(int i = 0; i < CS04.size(); i++){
+       System.out.println("Student ID: " + CS04.get(i));
+       System.out.println("Student Name: " + CS04studentNames.get(i));
+       System.out.println("Student Age: " + CS04studentAge.get(i));
+       System.out.println("Student Gender: " + CS04studentGender.get(i));
+      }
 
+      while(true){
+         
+        try {
+           System.out.print("Enter student ID: ");
+           int userInput = scan.nextInt();
+
+            if(CS04.contains(userInput)){
+
+               for(int i = 0; i < CS04.size(); i++){
+                   if(CS04.get(i) == userInput){
+                     
+                     System.out.print("Enter Student Name: ");
+                     String updatedName = scan.nextLine();
+
+                     System.out.print("Enter Student Age: ");
+                     int updatedAge = scan.nextInt();
+
+                     System.out.print("Enter Student Gender: ");
+                     String updatedGender = scan.nextLine();
+
+                     CS04studentNames.set(i, updatedName);
+                     CS04studentAge.set(i, updatedAge);
+                     CS04studentGender.set(i, updatedGender);
+                     
+                     System.out.println("Student " + CS04.get(i) + "Information, Successfully Updated!");
+                    }
+                }
+
+            }else{
+                System.out.println("Student ID does not exists!");
+            }
+        } catch (InputMismatchException e) {
+             System.out.println("Invalid Input!");
+             break;
+           }
+       }
+
+       while(true){
+         
+           try {
+            System.out.println("Choose your Next Action: \n");
+
+            System.out.println("1. Add new Student");
+            System.out.println("2. Update Student Information");
+            System.out.println("3. Remove a Student");
+            System.out.println("4. Back");
+            System.out.println("5. Exit\n");
+   
+            System.out.print("Enter here: ");
+            int userInput = scan.nextInt();
+
+            switch(userInput){
+
+                case 1:
+                 break;
+
+                case 2:
+                 break;
+
+                case 3:
+                 break;
+
+                case 4:
+                 break;
+
+                case 5:
+                 break;
+
+                default:
+            }
+           } catch (Exception e) {
+              System.out.println("Invalid Input!");
+              break;
+           }
+       }
     }
 
     public void adminDeleteStudents(){
