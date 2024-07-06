@@ -291,22 +291,27 @@ public class StudentManagement {
  
              switch(userInput){
  
-                 case 1:
-                  break;
- 
-                 case 2:
-                  break;
- 
-                 case 3:
-                  break;
- 
-                 case 4:
-                  break;
- 
-                 case 5:
-                  break;
- 
-                 default:
+                case 1:
+                adminAddNewStudents(scan);
+                break;
+
+               case 2:
+               adminUpdateStudentDetails(scan);
+                break;
+
+               case 3:
+               adminDeleteStudents(scan);
+                break;
+
+               case 4:
+               new Dashboard().adminDashboard(scan);
+                break;
+
+               case 5:
+               new LogInPage(scan);
+                break;
+
+               default:
              }
             } catch (Exception e) {
                System.out.println("Invalid Input!");
@@ -379,21 +384,26 @@ public class StudentManagement {
             switch(userInput){
 
                 case 1:
-                 break;
-
-                case 2:
-                 break;
-
-                case 3:
-                 break;
-
-                case 4:
-                 break;
-
-                case 5:
-                 break;
-
-                default:
+                  adminAddNewStudents(scan);
+                  break;
+ 
+                 case 2:
+                 adminUpdateStudentDetails(scan);
+                  break;
+ 
+                 case 3:
+                 adminDeleteStudents(scan);
+                  break;
+ 
+                 case 4:
+                 new Dashboard().adminDashboard(scan);
+                  break;
+ 
+                 case 5:
+                 new LogInPage(scan);
+                  break;
+ 
+                 default:
             }
            } catch (Exception e) {
               System.out.println("Invalid Input!");
@@ -466,21 +476,26 @@ public class StudentManagement {
             switch(userInput){
 
                 case 1:
-                 break;
-
-                case 2:
-                 break;
-
-                case 3:
-                 break;
-
-                case 4:
-                 break;
-
-                case 5:
-                 break;
-
-                default:
+                  adminAddNewStudents(scan);
+                  break;
+ 
+                 case 2:
+                 adminUpdateStudentDetails(scan);
+                  break;
+ 
+                 case 3:
+                 adminDeleteStudents(scan);
+                  break;
+ 
+                 case 4:
+                 new Dashboard().adminDashboard(scan);
+                  break;
+ 
+                 case 5:
+                 new LogInPage(scan);
+                  break;
+ 
+                 default:
             }
            } catch (Exception e) {
               System.out.println("Invalid Input!");
@@ -553,21 +568,26 @@ public class StudentManagement {
             switch(userInput){
 
                 case 1:
-                 break;
+                adminAddNewStudents(scan);
+                break;
 
-                case 2:
-                 break;
+               case 2:
+               adminUpdateStudentDetails(scan);
+                break;
 
-                case 3:
-                 break;
+               case 3:
+               adminDeleteStudents(scan);
+                break;
 
-                case 4:
-                 break;
+               case 4:
+               new Dashboard().adminDashboard(scan);
+                break;
 
-                case 5:
-                 break;
+               case 5:
+               new LogInPage(scan);
+                break;
 
-                default:
+               default:
             }
            } catch (Exception e) {
               System.out.println("Invalid Input!");
@@ -576,8 +596,367 @@ public class StudentManagement {
        }
     }
 
-    public void adminDeleteStudents(){
+    public void adminDeleteStudents(Scanner scan){
 
+        while(true){
+
+            try {
+              System.out.println("Select Section:\n");
+               
+              System.out.println("1. CS01");
+              System.out.println("2. CS02");
+              System.out.println("3. CS03");
+              System.out.println("4. CS04\n");
+
+              System.out.print("Enter here:");
+              int userInput = scan.nextInt();
+
+              switch(userInput){
+                 
+                case 1:
+                adminAddNewStudents(scan);
+                break;
+
+               case 2:
+               adminUpdateStudentDetails(scan);
+                break;
+
+               case 3:
+               adminDeleteStudents(scan);
+                break;
+
+               case 4:
+               new Dashboard().adminDashboard(scan);
+                break;
+
+               case 5:
+               new LogInPage(scan);
+                break;
+
+               default:
+                 
+               }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input!");
+                break;
+            }
+        }
+    }
+    //Delete Student Method Section CS01
+    public void adminDeleteCS01(Scanner scan){
+     
+        while(true){
+
+            for(int i = 0; i < CS01.size(); i++){
+                System.out.println("Student ID: " + CS01.get(i));
+                System.out.println("Student Name: " + CS01studentNames.get(i));
+                System.out.println("Student Age: " + CS01studentAge.get(i));
+                System.out.println("Student Gender: " + CS01studentGender.get(i));
+               }
+            try {
+                
+                System.out.print("Enter Student ID: ");
+                int userInput = scan.nextInt();
+
+                if(CS01.contains(userInput)){
+
+                    for(int i = 0; i < CS01.size(); i++){
+                        if(CS01.contains(CS01.get(i))){
+                           CS01.remove(CS01.get(i));
+                           CS01studentNames.remove(CS01studentNames.get(i));
+                           CS01studentAge.remove(CS01studentAge.get(i));
+                           CS01studentGender.remove(CS01studentGender.get(i));  
+                        }
+                    }
+                }
+            } catch (InputMismatchException e) {
+               System.out.println("Invalid Input!");
+               break;
+            }
+
+            System.out.println("Student Remove Successfully!");
+        }
+
+        while(true){
+         
+            try {
+             System.out.println("Choose your Next Action: \n");
+ 
+             System.out.println("1. Add new Student");
+             System.out.println("2. Update Student Information");
+             System.out.println("3. Remove a Student");
+             System.out.println("4. Back");
+             System.out.println("5. Exit\n");
+    
+             System.out.print("Enter here: ");
+             int userInput = scan.nextInt();
+ 
+             switch(userInput){
+ 
+                 case 1:
+                  adminAddNewStudents(scan);
+                  break;
+ 
+                 case 2:
+                 adminUpdateStudentDetails(scan);
+                  break;
+ 
+                 case 3:
+                 adminDeleteStudents(scan);
+                  break;
+ 
+                 case 4:
+                 new Dashboard().adminDashboard(scan);
+                  break;
+ 
+                 case 5:
+                 new LogInPage(scan);
+                  break;
+ 
+                 default:
+             }
+            } catch (Exception e) {
+               System.out.println("Invalid Input!");
+               break;
+            }
+        }
+    }
+     // Delete Student Method Section CS02
+    public void adminDeleteCS02(Scanner scan){
+        
+        while(true){
+
+            for(int i = 0; i < CS02.size(); i++){
+                System.out.println("Student ID: " + CS02.get(i));
+                System.out.println("Student Name: " + CS02studentNames.get(i));
+                System.out.println("Student Age: " + CS02studentAge.get(i));
+                System.out.println("Student Gender: " + CS02studentGender.get(i));
+               }
+            try {
+                
+                System.out.print("Enter Student ID: ");
+                int userInput = scan.nextInt();
+
+                if(CS02.contains(userInput)){
+
+                    for(int i = 0; i < CS02.size(); i++){
+                        if(CS02.contains(CS02.get(i))){
+                           CS02.remove(CS02.get(i));
+                           CS02studentNames.remove(CS02studentNames.get(i));
+                           CS01studentAge.remove(CS02studentAge.get(i));
+                           CS01studentGender.remove(CS02studentGender.get(i));  
+                        }
+                    }
+                }
+            } catch (InputMismatchException e) {
+               System.out.println("Invalid Input!");
+               break;
+            }
+
+            System.out.println("Student Remove Successfully!");
+        }
+
+        while(true){
+         
+            try {
+             System.out.println("Choose your Next Action: \n");
+ 
+             System.out.println("1. Add new Student");
+             System.out.println("2. Update Student Information");
+             System.out.println("3. Remove a Student");
+             System.out.println("4. Back");
+             System.out.println("5. Exit\n");
+    
+             System.out.print("Enter here: ");
+             int userInput = scan.nextInt();
+ 
+             switch(userInput){
+ 
+                 case 1:
+                  adminAddNewStudents(scan);
+                  break;
+ 
+                 case 2:
+                 adminUpdateStudentDetails(scan);
+                  break;
+ 
+                 case 3:
+                 adminDeleteStudents(scan);
+                  break;
+ 
+                 case 4:
+                 new Dashboard().adminDashboard(scan);
+                  break;
+ 
+                 case 5:
+                 new LogInPage(scan);
+                  break;
+ 
+                 default:
+             }
+            } catch (Exception e) {
+               System.out.println("Invalid Input!");
+               break;
+            }
+        }
+    }
+    // Delete Student Method Section CS03
+    public void adminDeleteCS03(Scanner scan){
+
+        while(true){
+
+            for(int i = 0; i < CS03.size(); i++){
+                System.out.println("Student ID: " + CS03.get(i));
+                System.out.println("Student Name: " + CS03studentNames.get(i));
+                System.out.println("Student Age: " + CS03studentAge.get(i));
+                System.out.println("Student Gender: " + CS03studentGender.get(i));
+               }
+            try {
+                
+                System.out.print("Enter Student ID: ");
+                int userInput = scan.nextInt();
+
+                if(CS03.contains(userInput)){
+
+                    for(int i = 0; i < CS03.size(); i++){
+                        if(CS03.contains(CS03.get(i))){
+                           CS03.remove(CS03.get(i));
+                           CS03studentNames.remove(CS03studentNames.get(i));
+                           CS03studentAge.remove(CS03studentAge.get(i));
+                           CS03studentGender.remove(CS03studentGender.get(i));  
+                        }
+                    }
+                }
+            } catch (InputMismatchException e) {
+               System.out.println("Invalid Input!");
+               break;
+            }
+
+            System.out.println("Student Remove Successfully!");
+        }
+
+        while(true){
+         
+            try {
+             System.out.println("Choose your Next Action: \n");
+ 
+             System.out.println("1. Add new Student");
+             System.out.println("2. Update Student Information");
+             System.out.println("3. Remove a Student");
+             System.out.println("4. Back");
+             System.out.println("5. Exit\n");
+    
+             System.out.print("Enter here: ");
+             int userInput = scan.nextInt();
+ 
+             switch(userInput){
+ 
+                 case 1:
+                  adminAddNewStudents(scan);
+                  break;
+ 
+                 case 2:
+                 adminUpdateStudentDetails(scan);
+                  break;
+ 
+                 case 3:
+                 adminDeleteStudents(scan);
+                  break;
+ 
+                 case 4:
+                 new Dashboard().adminDashboard(scan);
+                  break;
+ 
+                 case 5:
+                 new LogInPage(scan);
+                  break;
+ 
+                 default:
+             }
+            } catch (Exception e) {
+               System.out.println("Invalid Input!");
+               break;
+            }
+        }
+    }
+    // Student Delete Method Section CS04
+    public void adminDeleteCS04(Scanner scan){
+        
+        while(true){
+
+            for(int i = 0; i < CS04.size(); i++){
+                System.out.println("Student ID: " + CS04.get(i));
+                System.out.println("Student Name: " + CS04studentNames.get(i));
+                System.out.println("Student Age: " + CS04studentAge.get(i));
+                System.out.println("Student Gender: " + CS04studentGender.get(i));
+               }
+            try {
+                
+                System.out.print("Enter Student ID: ");
+                int userInput = scan.nextInt();
+
+                if(CS04.contains(userInput)){
+
+                    for(int i = 0; i < CS04.size(); i++){
+                        if(CS04.contains(CS04.get(i))){
+                           CS04.remove(CS04.get(i));
+                           CS04studentNames.remove(CS04studentNames.get(i));
+                           CS04studentAge.remove(CS04studentAge.get(i));
+                           CS04studentGender.remove(CS04studentGender.get(i));  
+                        }
+                    }
+                }
+            } catch (InputMismatchException e) {
+               System.out.println("Invalid Input!");
+               break;
+            }
+
+            System.out.println("Student Remove Successfully!");
+        }
+
+        while(true){
+         
+            try {
+             System.out.println("Choose your Next Action: \n");
+ 
+             System.out.println("1. Add new Student");
+             System.out.println("2. Update Student Information");
+             System.out.println("3. Remove a Student");
+             System.out.println("4. Back");
+             System.out.println("5. Exit\n");
+    
+             System.out.print("Enter here: ");
+             int userInput = scan.nextInt();
+ 
+             switch(userInput){
+ 
+                 case 1:
+                  adminAddNewStudents(scan);
+                  break;
+ 
+                 case 2:
+                 adminUpdateStudentDetails(scan);
+                  break;
+ 
+                 case 3:
+                 adminDeleteStudents(scan);
+                  break;
+ 
+                 case 4:
+                 new Dashboard().adminDashboard(scan);
+                  break;
+ 
+                 case 5:
+                 new LogInPage(scan);
+                  break;
+ 
+                 default:
+             }
+            } catch (Exception e) {
+               System.out.println("Invalid Input!");
+               break;
+            }
+        }
     }
 
     public void studentViewDetails(){
