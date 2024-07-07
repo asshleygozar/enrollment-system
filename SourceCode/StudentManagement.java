@@ -1,32 +1,34 @@
 package EnrollmentSystem.SourceCode;
 
+import java.net.SocketTimeoutException;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class StudentManagement {
 
-    private LinkedList <Integer> CS01 = new LinkedList<Integer>();
-    private LinkedList <Integer> CS02 = new LinkedList<Integer>();
-    private LinkedList <Integer> CS03 = new LinkedList<Integer>();
-    private LinkedList <Integer> CS04 = new LinkedList<Integer>();
+    private LinkedList <Integer> CS01 = new LinkedList<Integer>();  //CS01 student IDs
+    private LinkedList <Integer> CS02 = new LinkedList<Integer>();  //CS02 student IDs
+    private LinkedList <Integer> CS03 = new LinkedList<Integer>();  //CS03 student IDs
+    private LinkedList <Integer> CS04 = new LinkedList<Integer>();  //CS04 student IDs
 
-    private LinkedList <String> CS01studentNames = new LinkedList<String>();
-    private LinkedList <Integer> CS01studentAge = new LinkedList<Integer>();
-    private LinkedList <String> CS01studentGender = new LinkedList<String>();
+    private LinkedList <String> CS01studentNames = new LinkedList<String>(); //CS01 student's full names
+    private LinkedList <Integer> CS01studentAge = new LinkedList<Integer>(); //CS01 student's age
+    private LinkedList <String> CS01studentGender = new LinkedList<String>(); //CS01 student's genders
 
-    private LinkedList <String> CS02studentNames = new LinkedList<String>();
-    private LinkedList <Integer> CS02studentAge = new LinkedList<Integer>();
-    private LinkedList <String> CS02studentGender = new LinkedList<String>();
+    private LinkedList <String> CS02studentNames = new LinkedList<String>(); //CS02 student's null Names
+    private LinkedList <Integer> CS02studentAge = new LinkedList<Integer>(); //CS02 student's age
+    private LinkedList <String> CS02studentGender = new LinkedList<String>(); //CS02 student's genders
 
-    private LinkedList <String> CS03studentNames = new LinkedList<String>();
-    private LinkedList <Integer> CS03studentAge = new LinkedList<Integer>();
-    private LinkedList <String> CS03studentGender = new LinkedList<String>();
+    private LinkedList <String> CS03studentNames = new LinkedList<String>(); //CS03 student's full names
+    private LinkedList <Integer> CS03studentAge = new LinkedList<Integer>(); //CS03 student's age
+    private LinkedList <String> CS03studentGender = new LinkedList<String>(); //CS03 student's genders
 
-    private LinkedList <String> CS04studentNames = new LinkedList<String>();
-    private LinkedList <Integer> CS04studentAge = new LinkedList<Integer>();
-    private LinkedList <String> CS04studentGender = new LinkedList<String>();
-
+    private LinkedList <String> CS04studentNames = new LinkedList<String>(); //CS04 student's full names
+    private LinkedList <Integer> CS04studentAge = new LinkedList<Integer>(); //CS04 student's age
+    private LinkedList <String> CS04studentGender = new LinkedList<String>(); //CS04 student's genders
+  
+    // Admin Student Management Method
     public void adminStudentManagement(Scanner scan){
      
         while(true){
@@ -72,7 +74,7 @@ public class StudentManagement {
                }
         }
     }
-
+   // Admin Add new Students Method
     public void adminAddNewStudents(Scanner scan){
        
         while(true){
@@ -115,7 +117,7 @@ public class StudentManagement {
             }
         }
     }
-
+    // add class CS01 method
     public void addClassCS01(Scanner scan){
 
      while(true){
@@ -146,7 +148,7 @@ public class StudentManagement {
           }
        }      
     }
-
+    // add class CS02 method
     public void addClassCS02(Scanner scan){
 
         while(true){
@@ -177,7 +179,7 @@ public class StudentManagement {
             }
         } 
     }
-
+     // add class CS03 method
     public void addClassCS03(Scanner scan){
 
         while(true){
@@ -210,7 +212,7 @@ public class StudentManagement {
             }
         } 
     }
-
+     // add class CS04 method
     public void addClassCS04(Scanner scan){
         while(true){
         
@@ -996,12 +998,135 @@ public class StudentManagement {
             }
         }
     }
+    // Student View Details Method
+    public void studentViewDetails(Scanner scan){
+     
+        System.out.println("Please Enter you Student ID");
+        while(true){
+            
+            try {
+                
+            } catch (Exception e) {
+               
+            System.out.print("Enter here:");
+            int studentID = scan.nextInt();
 
-    public void studentViewDetails(){
+             if(new EnrollmentManagement().getStudentID().contains(studentID)){
 
+                 for(int i = 0; i < new EnrollmentManagement().getStudentID().size(); i++){
+                    if(new EnrollmentManagement().getStudentID().get(i) == studentID){
+                        System.out.println(new EnrollmentManagement().getStudentID().get(i));
+                        System.out.println(new EnrollmentManagement().getStudentName().get(i));
+                        System.out.println(new EnrollmentManagement().getStudentAges().get(i));
+                        System.out.println(new EnrollmentManagement().getStudentGenderIdentity().get(i));
+                      }
+                  }
+             }else{
+                 System.out.println("Student ID does not exist");
+             }
+        }
+          while(true){
+   
+           System.out.println("Choose your next Action: ");
+    
+           System.out.println("1. Back");
+           System.out.println("2. Exit");
+         
+         try {
+         
+             System.out.print("Enter here: ");
+             int userInput = scan.nextInt();
+
+             switch(userInput){
+     
+                case 1:
+                 new Dashboard().studentDashboard(scan);
+                 break;
+    
+                case 2:
+                 new LogInPage().userLogIn(scan);
+                 break;
+    
+                default:
+            }
+     
+         } catch (java.util.InputMismatchException e) {
+       
+               System.out.println("Invalid Input!");
+               break;
+              }
+          } 
+      }
     }
+  // Student Update Details Method
+    public void studentUpdateDetails(Scanner scan){
 
-    public void studentUpdateDetails(){
+        System.out.println("Please Enter you Student ID");
+        while(true){
+            
+            try {
+                
+            } catch (Exception e) {
+               
+            System.out.print("Enter here:");
+            int studentID = scan.nextInt();
 
-    }
+             if(new EnrollmentManagement().getStudentID().contains(studentID)){
+
+                 for(int i = 0; i < new EnrollmentManagement().getStudentID().size(); i++){
+                    if(new EnrollmentManagement().getStudentID().get(i) == studentID){
+                        
+                        System.out.print("Enter Full Name: ");
+                        String updatedName = scan.nextLine();
+
+                        System.out.print("Enter Age: ");
+                        int updatedAge = scan.nextInt();
+
+                        System.out.println("Enter Gender: ");
+                        String updatedGender = scan.nextLine();
+
+                        new EnrollmentManagement().getStudentName().set(i, updatedName);
+                        new EnrollmentManagement().getStudentAges().set(i, updatedAge);
+                        new EnrollmentManagement().getStudentGenderIdentity().set(i, updatedGender);
+                      }
+                  }
+
+             }else{
+                 System.out.println("Student ID does not exist");
+             }
+        }
+          while(true){
+   
+           System.out.println("Choose your next Action: ");
+    
+           System.out.println("1. Back");
+           System.out.println("2. Exit");
+         
+         try {
+         
+             System.out.print("Enter here: ");
+             int userInput = scan.nextInt();
+
+             switch(userInput){
+     
+                case 1:
+                 new Dashboard().studentDashboard(scan);
+                 break;
+    
+                case 2:
+                 new LogInPage().userLogIn(scan);
+                 break;
+    
+                default:
+            }
+     
+         } catch (java.util.InputMismatchException e) {
+       
+               System.out.println("Invalid Input!");
+               break;
+
+               }
+            } 
+        }
+    }  
 }
