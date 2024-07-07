@@ -12,11 +12,7 @@ public class LogInPage extends Credentials{
     private  int studentAccountID;  // student accound ID scanner
     private  Object studentPassword;  // student password scanner
 
-    LogInPage(Scanner sc){
-         userLogIn(sc);
-        
-    }
-
+  
     // Asks the user what is their role
      public void userLogIn(Scanner logIn){
 
@@ -57,7 +53,7 @@ public class LogInPage extends Credentials{
     }
    // if user is admin, they will go here. The admin login 
     public void adminCredential(Scanner logIn){
-
+   while(true){
         try {
         
             System.out.print("Account ID: ");
@@ -67,7 +63,7 @@ public class LogInPage extends Credentials{
        } catch (java.util.InputMismatchException  e) {
 
             System.out.println("Invalid Account ID!");
-       
+            break;
          } 
 
             if(!adminCredentials.containsKey(adminAccountID)){
@@ -91,9 +87,10 @@ public class LogInPage extends Credentials{
                         System.out.println("Log In Succcessful!");
                         System.out.println("Welcome to your dashboard user " + adminAccountID);  
                         new Dashboard().adminDashboard(logIn);;   
-               } 
-            }  
-         }
+                  } 
+              } 
+          } 
+      }
     // If user is student, they will go here. The Student Log In
     public void studentCredential(Scanner logIn){
 
@@ -136,9 +133,7 @@ public class LogInPage extends Credentials{
          }
 
     public static void main(String[]args){
-
-     Scanner scanner = new Scanner(System.in);;
-        
+    Scanner scan =  new Scanner(System.in);
        // Data Placeholder using Hashmap 
         adminCredentials.put(54321, "fefri");
         adminCredentials.put( 9876, "Hello");
@@ -148,7 +143,7 @@ public class LogInPage extends Credentials{
         studentCredentials.put(2023, "OuM");
         studentCredentials.put(2024, "Yes");
 
-        new LogInPage(scanner);
+        new LogInPage().userLogIn(scan);;
 
     }
 }
