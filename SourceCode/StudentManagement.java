@@ -28,7 +28,49 @@ public class StudentManagement {
     private LinkedList <String> CS04studentGender = new LinkedList<String>();
 
     public void adminStudentManagement(Scanner scan){
-
+     
+        while(true){
+            try {
+                System.out.println("Choose your Action: \n");
+    
+                System.out.println("1. Add new Student");
+                System.out.println("2. Update Student Information");
+                System.out.println("3. Remove a Student");
+                System.out.println("4. Back");
+                System.out.println("5. Exit");
+       
+                System.out.print("Enter here: ");
+                int userInput = scan.nextInt();
+    
+                switch(userInput){
+    
+                    case 1:
+                      adminAddNewStudents(scan);
+                      break;
+     
+                     case 2:
+                     adminUpdateStudentDetails(scan);
+                      break;
+     
+                     case 3:
+                     adminDeleteStudents(scan);
+                      break;
+     
+                     case 4:
+                     new Dashboard().adminDashboard(scan);
+                      break;
+     
+                     case 5:
+                     new LogInPage().userLogIn(scan);
+                      break;
+     
+                     default:
+                }
+               } catch (InputMismatchException e) {
+                  System.out.println("Invalid Input!");
+                  break;
+               }
+        }
     }
 
     public void adminAddNewStudents(Scanner scan){
@@ -69,6 +111,7 @@ public class StudentManagement {
                 }
             } catch (InputMismatchException e) {
                  System.out.println("Invalid Input!");
+                 break;
             }
         }
     }
@@ -78,9 +121,7 @@ public class StudentManagement {
      while(true){
         
         try {
-           System.out.print("Enter here: ");
-
-           System.out.print("Student ID: \n");
+           System.out.print("Student ID: ");
            int userInput = scan.nextInt();
  
         if(!new EnrollmentManagement().getStudentID().contains(userInput)){
@@ -111,8 +152,6 @@ public class StudentManagement {
         while(true){
         
             try {
-               System.out.print("Enter here: ");
-    
                System.out.print("Student ID: \n");
                int userInput = scan.nextInt();
      
@@ -176,9 +215,8 @@ public class StudentManagement {
         while(true){
         
             try {
-               System.out.print("Enter here: ");
-    
-               System.out.print("Student ID: \n");
+           
+               System.out.print("Student ID:");
                int userInput = scan.nextInt();
      
             if(!new EnrollmentManagement().getStudentID().contains(userInput)){
@@ -308,7 +346,7 @@ public class StudentManagement {
                 break;
 
                case 5:
-               new LogInPage(scan);
+               new LogInPage().userLogIn(scan);;
                 break;
 
                default:
@@ -400,7 +438,7 @@ public class StudentManagement {
                   break;
  
                  case 5:
-                 new LogInPage(scan);
+                 new LogInPage().userLogIn(scan);;
                   break;
  
                  default:
@@ -492,7 +530,7 @@ public class StudentManagement {
                   break;
  
                  case 5:
-                 new LogInPage(scan);
+                 new LogInPage().userLogIn(scan);
                   break;
  
                  default:
@@ -584,7 +622,7 @@ public class StudentManagement {
                 break;
 
                case 5:
-               new LogInPage(scan);
+               new LogInPage().userLogIn(scan);
                 break;
 
                default:
@@ -630,7 +668,7 @@ public class StudentManagement {
                 break;
 
                case 5:
-               new LogInPage(scan);
+               new LogInPage().userLogIn(scan);
                 break;
 
                default:
@@ -710,7 +748,7 @@ public class StudentManagement {
                   break;
  
                  case 5:
-                 new LogInPage(scan);
+                 new LogInPage().userLogIn(scan);
                   break;
  
                  default:
@@ -789,7 +827,7 @@ public class StudentManagement {
                   break;
  
                  case 5:
-                 new LogInPage(scan);
+                 new LogInPage().userLogIn(scan);
                   break;
  
                  default:
@@ -868,7 +906,7 @@ public class StudentManagement {
                   break;
  
                  case 5:
-                 new LogInPage(scan);
+                 new LogInPage().userLogIn(scan);
                   break;
  
                  default:
@@ -947,7 +985,7 @@ public class StudentManagement {
                   break;
  
                  case 5:
-                 new LogInPage(scan);
+                 new LogInPage().userLogIn(scan);
                   break;
  
                  default:
