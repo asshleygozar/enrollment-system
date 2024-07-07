@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
+import java.io.*;
 
 public class EnrollmentManagement {
 
@@ -73,6 +74,19 @@ public class EnrollmentManagement {
        studentID.add(studentIdentity);
        studentAges.add(studentAge);
        studentGenderIdentity.add(studentGender);
+    
+        try {
+          FileOutputStream studentFile = new FileOutputStream("\\G:\\Data Information Files\\StudentsInformation.txt\\");
+          ObjectOutput insert = new ObjectOutputStream(studentFile);
+          insert.writeObject(studentFullName);
+          insert.writeObject(studentGender);
+          insert.flush();
+          insert.close();
+
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+     
 
        System.out.println("Student Added Successful!");
 
@@ -108,7 +122,7 @@ public class EnrollmentManagement {
              break;
     
             case 4: 
-             new LogInPage(enroll);
+             new LogInPage().userLogIn(enroll);
              looping = false;
              break;
     
@@ -121,9 +135,9 @@ public class EnrollmentManagement {
           System.out.println("Invalid Input!");
           break;
 
-         }
-       } 
-     }
+            }
+         } 
+      }
    }
 
    public void adminViewEnrollees(Scanner sc){
@@ -168,7 +182,7 @@ public class EnrollmentManagement {
               break;
               
             case 4:
-              new LogInPage(sc);
+              new LogInPage().userLogIn(sc);
               looping = false;
               break;
         
@@ -264,7 +278,7 @@ public class EnrollmentManagement {
              break;
              
            case 4:
-             new LogInPage(scan);
+             new LogInPage().userLogIn(scan);
              looping = false;
              break;
        
@@ -319,8 +333,8 @@ public class EnrollmentManagement {
   
           System.out.println("Invalid Input!");
           break;
-         }
-      } 
+           }
+       } 
    }
 
    public void studentEnrollment(){
