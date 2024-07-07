@@ -20,6 +20,7 @@ public class Dashboard {
 
       System.out.println("1. Course Management");
       System.out.println("2. Enrollment Management");
+      System.out.println("3. Student Management");
 
     // To handle input mismatch 
       try {
@@ -48,7 +49,8 @@ public class Dashboard {
           case 3:
            looper = false;
            new StudentManagement().adminStudentManagement(dashboard);;
-
+           break;
+           
           default:
            looper = true;
        } 
