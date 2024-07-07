@@ -1,8 +1,8 @@
 package EnrollmentSystem.SourceCode;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CourseManagement {
@@ -105,7 +105,7 @@ public class CourseManagement {
                   break;
  
                  case 5:
-                 new LogInPage(scan);
+                 new LogInPage().userLogIn(scan);
                   break;
  
                  default:
@@ -123,11 +123,92 @@ public class CourseManagement {
      // Method for Updating Course
     public void adminUpdateCourse(Scanner scan){
      
+        System.out.println("Lists of Courses\n");
+         for(int i = 0; i < courses.size(); i++){
+          System.out.println(courses.get(i));
+       }
+        while(true){
+            System.out.println("Enter the course you want to update:\n");
+            System.out.print("Enter here: ");
+            String userInput = scan.nextLine();
+
+                for(int j = 0; j < courses.size(); j++){
+
+                    if(courses.contains(userInput)){
+                     System.out.print("Enter the updated course: ");
+                     String updatedCourse = scan.nextLine();
+       
+                     courses.set(j, updatedCourse);
+                     break;
+                }
+            }             
+        }
     }
      // Method for Deleteing Courses
     public void adminDeleteCourses(Scanner scan){
 
-    }
+        System.out.println("Lists of Courses\n");
+        for(int i = 0; i < courses.size(); i++){
+         System.out.println(courses.get(i));
+      }
+       while(true){
+           System.out.println("Enter the course you want to delete:\n");
+           System.out.print("Enter here: ");
+           String userInput = scan.nextLine();
+
+               for(int j = 0; j < courses.size(); j++){
+
+                   if(courses.contains(userInput)){
+                      courses.remove(j);
+                     
+                      while(true){
+                        try {
+                            System.out.println("Choose your Next Action: \n");
+                
+                            System.out.println("1. Add new Student");
+                            System.out.println("2. Update Student Information");
+                            System.out.println("3. Remove a Student");
+                            System.out.println("4. Back");
+                            System.out.println("5. Exit\n");
+                   
+                            System.out.print("Enter here: ");
+                            int input = scan.nextInt();
+                
+                            switch(input){
+                
+                                case 1:
+                                 adminAddCourse(scan);
+                                 break;
+                
+                                case 2:
+                                adminUpdateCourse(scan);
+                                 break;
+                
+                                case 3:
+                                adminDeleteCourses(scan);
+                                 break;
+                
+                                case 4:
+                                new Dashboard().adminDashboard(scan);
+                                 break;
+                
+                                case 5:
+                                new LogInPage().userLogIn(scan);
+                                 break;
+                
+                                default:
+                            }
+                           } catch (Exception e) {
+                              System.out.println("Invalid Input!");
+                              break;
+                           }
+                      }
+               }else{
+                  System.out.println("Course does not exist!");
+               }
+           }             
+       }
+   }
      // Method for Student Viewing their Courses
     public void studentViewCourse(Scanner scan){
 
