@@ -1,6 +1,7 @@
 package EnrollmentSystem.SourceCode;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,9 +9,18 @@ import java.util.Scanner;
 public class CourseManagement {
 
     private List <String> courses = new ArrayList<String>();
+    private List <String> studentUnits = new LinkedList<String>();
     private boolean loop = true;
   
-     // Method for choosing which action to take
+     // Method for getting lists of courses
+     public List <String> getCourses(){
+        return courses;
+     }
+     // Method getting student units
+     public List <String> getStudentsUnits(){
+        return studentUnits;
+     }
+ // Method for Admins Course Management
     public void adminCourseManagement(Scanner scan){
 
         while(loop){
@@ -53,7 +63,7 @@ public class CourseManagement {
             }
         }
     }
-    // Method for Adding Course
+    // Method for Admins Adding Courses
     public void adminAddCourse(Scanner scan){
       
         while(true){
@@ -120,7 +130,7 @@ public class CourseManagement {
         }
         
     }
-     // Method for Updating Course
+     // Method for Admins Updating Course
     public void adminUpdateCourse(Scanner scan){
      
         System.out.println("Lists of Courses\n");
@@ -209,9 +219,43 @@ public class CourseManagement {
            }             
        }
    }
-     // Method for Student Viewing their Courses
+     // Method for Student Viewing Available Courses
     public void studentViewCourse(Scanner scan){
 
+        for(int i = 0; i < courses.size(); i++){
+            System.out.println(courses.get(i));
+          }
+         
+          while(true){
+   
+           System.out.println("Choose your next Action: ");
+    
+           System.out.println("1. Back");
+           System.out.println("2. Exit");
+         
+         try {
+         
+             System.out.print("Enter here: ");
+             int userInput = scan.nextInt();
 
-    }
-}
+             switch(userInput){
+     
+                case 1:
+                 new Dashboard().studentDashboard(scan);
+                 break;
+    
+                case 2:
+                 new LogInPage().userLogIn(scan);
+                 break;
+    
+                default:
+            }
+     
+         } catch (java.util.InputMismatchException e) {
+       
+               System.out.println("Invalid Input!");
+               break;
+              }
+          } 
+      }
+  }
