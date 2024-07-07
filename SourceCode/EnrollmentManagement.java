@@ -8,20 +8,16 @@ import java.io.*;
 
 public class EnrollmentManagement {
 
-    private int userInput;
-    private int studentAge;
-    private boolean looping = true;
-    private String studentFullName;
-    private String studentGender;
-    private ArrayList <String> studentName = new ArrayList <String> ();
-    private ArrayList <Integer> studentID = new ArrayList <Integer> ();
-    private ArrayList <Integer> studentAges = new ArrayList <Integer> ();
-    private ArrayList <String> studentGenderIdentity = new ArrayList <String>();  
+    private int userInput;   // for user input scanner
+    private int studentAge;   // for student age scanner
+    private boolean looping = true;  // for conditioning on looping
+    private String studentFullName;   // for student full name scanner
+    private String studentGender;    // for student gender scanner
+    private ArrayList <String> studentName = new ArrayList <String> ();  // storage for enrolled student's names
+    private ArrayList <Integer> studentID = new ArrayList <Integer> ();   // storage for student's ID's
+    private ArrayList <Integer> studentAges = new ArrayList <Integer> ();  // storage for student's ages
+    private ArrayList <String> studentGenderIdentity = new ArrayList <String>(); // storage for student's genders
 
-   EnrollmentManagement(){
-
-
-   }
     // To access the datas from ArrayList Student Names
    public ArrayList<String> getStudentName(){
     return studentName;
@@ -74,7 +70,7 @@ public class EnrollmentManagement {
        studentID.add(studentIdentity);
        studentAges.add(studentAge);
        studentGenderIdentity.add(studentGender);
-    
+    // I will finish this database later, for now let's focus on the process.
         try {
           FileOutputStream studentFile = new FileOutputStream("\\G:\\Data Information Files\\StudentsInformation.txt\\");
           ObjectOutput insert = new ObjectOutputStream(studentFile);
@@ -139,7 +135,7 @@ public class EnrollmentManagement {
          } 
       }
    }
-
+   // Admin View Enrollees Method
    public void adminViewEnrollees(Scanner sc){
       
 
@@ -200,7 +196,7 @@ public class EnrollmentManagement {
       
      
      
-
+  // Admin Remove Enrollee
    public void adminRemoveEnrollee(Scanner scan){
     
      System.out.println("Remove Enrollee Section");
@@ -292,7 +288,7 @@ public class EnrollmentManagement {
          } 
       }
    }
-   
+    // Admin Management Method
    public void adminManagement(Scanner scanner){
 
     while(looping){
@@ -336,36 +332,215 @@ public class EnrollmentManagement {
            }
        } 
    }
-
-   public void studentEnrollment(){
-
-
-   }
-
-   public void studentViewEnrollements(){
-
-
-   }
-
-   public void studentDropCourse(){
+    // Student Enrollment Method
+   public void studentEnrollment(Scanner scan){
     
-    
-   }
+     System.out.println("Available Courses:");
+     for(int i = 0; i < new CourseManagement().getCourses().size(); i++){
+        System.out.println(new CourseManagement().getCourses().get(i));
+       }
+
+       while(true){
+         System.out.print("Enter the course you want to enroll: ");
+         String getCourseInput = scan.nextLine();
+
+          if(new CourseManagement().getCourses().contains(getCourseInput)){
+               // To be added in the data base
+               break;
+          }
+       }
+
+       while(true){
+        try {
+          System.out.println("Choose your next action:\n");
+          System.out.println("1. Enroll new Course");
+          System.out.println("2. View Enrollments");
+          System.out.println("3. Drop a course");
+          System.out.println("4. Back");
+          System.out.println("5. Exit");
+ 
+          System.out.print("Enter here: ");
+          int input = scan.nextInt();
+ 
+          switch (input) {
    
-   public void studentManagement(Scanner scanner){
+           case 1:
+             studentEnrollment(scan);
+             looping = false;
+              break;
+ 
+           case 2:
+             studentViewEnrollements(scan);
+             looping = false;
+             break;
+       
+           case 3:
+             studentDropCourse(scan);
+             looping = false;
+             break;
+             
+           case 4:
+             new Dashboard().studentDashboard(scan);
+             looping = false;
+             break;
+
+           case 5:
+            new LogInPage().userLogIn(scan);
+       
+           default:
+            looping = true;
+       
+            }
+         } catch (Exception e) {
+           System.out.println("Invalid Input!");
+           break;
+           }
+       }
+   }
+
+      
+   //Student View Enrollments Method
+   public void studentViewEnrollements(Scanner scan){
+    
+       for(int i = 0; i < new CourseManagement().getStudentsUnits().size(); i++){
+         System.out.println(new CourseManagement().getStudentsUnits().get(i));
+       }
+      
+       while(looping){
+
+        System.out.println("Choose your next Action: ");
+  
+        System.out.println("1. Enroll a Course");
+        System.out.println("2. View your Enrollments.");
+        System.out.println("3. Drop Course");
+        System.out.println("4. Back");
+        System.out.println("5. Exit");
+      
+      try {
+      
+          System.out.print("Enter here: ");
+          userInput = scan.nextInt();
+  
+      } catch (java.util.InputMismatchException e) {
+    
+            System.out.println("Invalid Input!");
+            break;
+           }
+  
+           switch(userInput){
+  
+              case 1: 
+               looping = false;
+               studentEnrollment(scan);
+               break;
+  
+              case 2:
+               looping = false;
+               studentViewEnrollements(scan);
+               break;
+  
+              case 3:
+               looping = false;
+               studentDropCourse(scan);
+               break;
+  
+              case 4:
+               looping = false;
+               new Dashboard().studentDashboard(scan);
+               break;
+  
+              case 5:
+               looping = false;
+               new LogInPage().userLogIn(scan);
+               break;
+  
+              default:
+               looping = true;
+             }
+        } 
+   }
+  // Student Drop Course Method
+   public void studentDropCourse(Scanner scan){
+    
+    System.out.println("Enrolled Courses");
+    for(int i = 0; i < new CourseManagement().getCourses().size(); i++){
+       System.out.println(new CourseManagement().getCourses().get(i));
+      }
+
+      while(true){
+        System.out.print("Enter the course you want to drop ");
+        String getCourseInput = scan.nextLine();
+
+         if(new CourseManagement().getStudentsUnits().contains(getCourseInput)){
+              // To be remove in the data base
+              break;
+         }
+      }
+
+      while(true){
+       try {
+         System.out.println("Choose your next action:\n");
+         System.out.println("1. Enroll new Course");
+         System.out.println("2. View Enrollments");
+         System.out.println("3. Drop a course");
+         System.out.println("4. Back");
+         System.out.println("5. Exit");
+
+         System.out.print("Enter here: ");
+         int input = scan.nextInt();
+
+         switch (input) {
+  
+          case 1:
+            studentEnrollment(scan);
+            looping = false;
+             break;
+
+          case 2:
+            studentViewEnrollements(scan);
+            looping = false;
+            break;
+      
+          case 3:
+            studentDropCourse(scan);
+            looping = false;
+            break;
+            
+          case 4:
+            new Dashboard().studentDashboard(scan);
+            looping = false;
+            break;
+
+          case 5:
+           new LogInPage().userLogIn(scan);
+      
+          default:
+           looping = true;
+      
+           }
+        } catch (Exception e) {
+          System.out.println("Invalid Input!");
+          break;
+         }
+     }
+ }
+   // Student Management Method
+   public void studentManagement(Scanner scan){
 
     while(looping){
 
-      System.out.println("Choose your Action: ");
+      System.out.println("Choose your next Action: ");
 
       System.out.println("1. Enroll a Course");
       System.out.println("2. View your Enrollments.");
       System.out.println("3. Drop Course");
+      System.out.println("4. Back");
+      System.out.println("5. Exit");
     
     try {
     
         System.out.print("Enter here: ");
-        userInput = scanner.nextInt();
+        userInput = scan.nextInt();
 
     } catch (java.util.InputMismatchException e) {
   
@@ -377,19 +552,32 @@ public class EnrollmentManagement {
 
             case 1: 
              looping = false;
+             studentEnrollment(scan);
              break;
 
             case 2:
              looping = false;
+             studentViewEnrollements(scan);
              break;
 
             case 3:
              looping = false;
+             studentDropCourse(scan);
+             break;
+
+            case 4:
+             looping = false;
+             new Dashboard().studentDashboard(scan);
+             break;
+
+            case 5:
+             looping = false;
+             new LogInPage().userLogIn(scan);
              break;
 
             default:
              looping = true;
-         }
-      } 
-   }
+            }
+        } 
+    }
 }
